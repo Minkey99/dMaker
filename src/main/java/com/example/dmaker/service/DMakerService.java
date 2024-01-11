@@ -39,7 +39,11 @@ public class DMakerService {
     // Isolation
     // Durability
 
-    /* Create */
+    /* Create
+    *  Entity Class Instance 생성.
+    *  Repository 초기화한 Entity Save.
+    *  Dto Class, CreateDeveloper 리턴.
+    *  */
     @Transactional
     public CreateDeveloper.Response createDeveloper(CreateDeveloper.Request request){
             validateCreateDeveloperRequest(request);

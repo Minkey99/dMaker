@@ -2,8 +2,10 @@ package com.example.dmaker.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+//@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public enum DeveloperLevel {
     NEW("신입 개발자"),
