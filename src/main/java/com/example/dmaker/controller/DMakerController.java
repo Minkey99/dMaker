@@ -1,13 +1,13 @@
 package com.example.dmaker.controller;
 
-import com.example.dmaker.dto.*;
-import com.example.dmaker.exception.DMakerException;
+import com.example.dmaker.dto.CreateDeveloper;
+import com.example.dmaker.dto.DeveloperDetailDto;
+import com.example.dmaker.dto.DeveloperDto;
+import com.example.dmaker.dto.EditDeveloper;
 import com.example.dmaker.service.DMakerService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,23 +60,5 @@ public class DMakerController {
             @PathVariable String memberId
     ) {
         return dMakerService.deleteDeveloper(memberId);
-    }
-
-    /* @ExceptionHandler : DMakerException 발생시 메서드 안으로 진입.
-    *  HttpServletRequest : 헤더, 쿠키, URL 정보 등등... 정보 포함.
-    *  */
-    @ResponseStatus(value = HttpStatus.CONFLICT)
-    @ExceptionHandler(DMakerException.class)
-    public DMakerErrorResponse handleException(
-            DMakerException e,
-            HttpServletRequest request
-    ){
-        log.error("errorCode {}, url {}, message: {},",
-                e.getDMakerErrorCode(), request.getRequestURL(), e.getDetailMessage());
-
-        return DMakerErrorResponse.builder()
-                .errorCode(e.getDMakerErrorCode())
-                .errorMessage(e.getDetailMessage())
-                .build();
     }
 }
